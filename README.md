@@ -2,7 +2,7 @@
 
 Feed the Sf-JSON.svelte component an array of any data. 
 
-(Ex.)
+###### Example 
 ```
 [
      {
@@ -78,6 +78,7 @@ Feed the Sf-JSON.svelte component an array of any data.
      }
 ]
 ```
+###### Result
 
 # Svelte + Vite
 
