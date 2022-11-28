@@ -1,8 +1,10 @@
 <script>
   import Item from './lib/Item.svelte'
-  import { sampleData } from './dev/dev'
+  // import { sampleData } from './dev/dev'
 
-  export let data = /* [] */ sampleData 
+  export let data 
+
+  data = typeof(data) === 'string' ? JSON.parse(data) : data 
   
   console.log(data)
 </script>
