@@ -1,4 +1,4 @@
-const data = [
+const sampleData = [
      {
           "attributes": {
                "type": "Contact",
@@ -71,4 +71,4 @@ const data = [
           }
      }
 ]
-export { data }
+export { sampleData }
