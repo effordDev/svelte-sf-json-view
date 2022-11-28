@@ -79,6 +79,8 @@ Feed the Sf-JSON.svelte component an array of any data. In this case we are pass
 ]
 ```
 ###### Result
+![image](https://user-images.githubusercontent.com/36901822/204320160-00f06819-4ec9-4634-a929-34b1cf66d390.png)
+
 
 # Svelte + Vite
 
