@@ -1,6 +1,6 @@
 # Overview
 
-Feed the Sf-JSON.svelte component an array of any data. 
+Feed the Sf-JSON.svelte component an array of any data. In this case we are passing example data from the Salesforce REST api.
 
 ###### Example 
 ```
