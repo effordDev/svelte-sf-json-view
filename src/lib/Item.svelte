@@ -18,24 +18,56 @@
 	}
 </script>
 
+<style>
+  .card {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 1em;
+    display: flex;
+  }
+
+  .record-container {
+    cursor: pointer;
+  }
+
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-row {
+    flex-direction: row;
+  }
+
+  .indent {
+    padding-left: 10px;
+  }
+
+  .label {
+    color: rgb(196, 196, 196);
+  }
+  .val {
+    color: rgb(20, 20, 20);
+  }
+</style>
+
   <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class={
   useIndent ? `indent` 
   : useFlex ? `card flex-col`
-  : 'card'}
+  : 'card flex-row'}
 >
-
+  
   {#each formatItem(item) as [key, value]}
     <!-- <div class="flex-col"> -->
       
       {#if !keysToNotDisplay.includes(key) && primitives.includes(typeof(value))}
           
         {format(key)}:
-      
-        {format(value)} 
 
+        {format(value)}         
+        
         <br />
-
+          
       {/if}
 
       {#if !keysToNotDisplay.includes(key) && typeof(value) == 'object' && !Array.isArray(value)}
