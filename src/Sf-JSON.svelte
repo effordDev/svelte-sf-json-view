@@ -1,7 +1,9 @@
 <script>
   import Item from './lib/Item.svelte'
-  import { data } from './dev/dev'
+  import { sampleData } from './dev/dev'
 
+  export let data = /* [] */ sampleData 
+  
   console.log(data)
 </script>
 
@@ -20,7 +22,3 @@
   
 </main>
 
-
-<style>
-  
-</style>
