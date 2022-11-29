@@ -68,6 +68,51 @@ const sampleData = [
                          "Status": "Working"
                     }
                ]
+          },
+          "Contacts": {
+               "totalSize": 2,
+               "done": true,
+               "records": [
+                    {
+                         "attributes": {
+                              "type": "Case",
+                              "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5svAAD"
+                         },
+                         "Id": "5003i00000LJ5svAAD",
+                         "Type": 'urgent',
+                         "Priority": "Medium",
+                         "Origin": "Phone",
+                         "Status": "New",
+                         "Fakeobject": {
+                              "totalSize": 1,
+                              "done": true,
+                              "records": [
+                                   {
+                                        "attributes": {
+                                             "type": "Case",
+                                             "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5svAAD"
+                                        },
+                                        "Id": "5123456789112345",
+                                        "Type": 'type',
+                                        "Priority": "meh",
+                                        "Origin": "text",
+                                        "Status": "ya",
+                                   },
+                              ],
+                         },
+                    },
+                    {
+                         "attributes": {
+                              "type": "Case",
+                              "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5swAAD"
+                         },
+                         "Id": "5003i00000LJ5swAAD",
+                         "Type": "Mechanical",
+                         "Priority": "Low",
+                         "Origin": "Email",
+                         "Status": "Working"
+                    }
+               ]
           }
      }
 ]
