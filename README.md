@@ -2,6 +2,7 @@
 
 Feed the Sf-JSON.svelte component an array of any data. In this case we are passing example data from the Salesforce REST api.
 
+[Live Demo](https://svelte.dev/repl/3951ed14c2d94880b9a0e9e56e9d1a22?version=3.53.1)
 ###### Example 
 ```
 [
@@ -79,6 +80,8 @@ Feed the Sf-JSON.svelte component an array of any data. In this case we are pass
 ]
 ```
 ###### Result
+![image](https://user-images.githubusercontent.com/36901822/204320160-00f06819-4ec9-4634-a929-34b1cf66d390.png)
+
 
 # Svelte + Vite
 
