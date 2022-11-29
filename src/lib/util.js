@@ -23,6 +23,7 @@ const primitives = [
      'bigint',
      'string'	
 ]
+
 const keysToNotDisplay = [
      'totalSize',
      'done',
