@@ -34,9 +34,22 @@ const formatItem = (item) => {
      return Array.isArray(item) ? item : Object.entries(item)
 }
 
+const formatArrayToObject = (data) => {
+
+     return (Array.isArray(data) ? data : Object.entries(data)).reduce((a, [k, v]) => {
+          
+          if (primitives.includes(typeof(v))) {
+     
+               return {...a, [k]: v}
+          }
+          return a
+     }, {})
+}
+
 export { 
      format,
      primitives,
      keysToNotDisplay,
-     formatItem
+     formatItem,
+     formatArrayToObject
 }

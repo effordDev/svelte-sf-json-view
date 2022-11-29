@@ -7,6 +7,7 @@ const sampleData = [
           "Id": "0033i00000Q9oRdAAJ",
           "Name": "Kelly Slater",
           "Title": "Surfer",
+          // "test": null,
           "Account": {
                "attributes": {
                     "type": "Account",
@@ -44,7 +45,7 @@ const sampleData = [
                               "records": [
                                    {
                                         "attributes": {
-                                             "type": "Case",
+                                             "type": "Fakeobject",
                                              "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5svAAD"
                                         },
                                         "Id": "5123456789112345",
@@ -52,6 +53,17 @@ const sampleData = [
                                         "Priority": "meh",
                                         "Origin": "text",
                                         "Status": "ya",
+                                   },
+                                   {
+                                        "attributes": {
+                                             "type": "Fakeobject",
+                                             "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5svAAD"
+                                        },
+                                        "Id": "0927331",
+                                        "Type": 'type',
+                                        "Priority": "yeah",
+                                        "Origin": "the story",
+                                        "Status": "oh ya",
                                    },
                               ],
                          },
@@ -69,48 +81,48 @@ const sampleData = [
                     }
                ]
           },
-          "Contacts": {
+          "Houses": {
                "totalSize": 2,
                "done": true,
                "records": [
                     {
                          "attributes": {
-                              "type": "Case",
+                              "type": "House",
                               "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5svAAD"
                          },
                          "Id": "5003i00000LJ5svAAD",
-                         "Type": 'urgent',
-                         "Priority": "Medium",
-                         "Origin": "Phone",
-                         "Status": "New",
-                         "Fakeobject": {
+                         "Type": 'Home',
+                         "Pool": "yes",
+                         "stories": "3",
+                         "basement": "yes",
+                         "Dogs": {
                               "totalSize": 1,
                               "done": true,
                               "records": [
                                    {
                                         "attributes": {
-                                             "type": "Case",
+                                             "type": "Dog",
                                              "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5svAAD"
                                         },
                                         "Id": "5123456789112345",
-                                        "Type": 'type',
-                                        "Priority": "meh",
-                                        "Origin": "text",
-                                        "Status": "ya",
+                                        "Type": 'husky',
+                                        "Good Boy": true,
+                                        "Good Girl": false,
+                                        "Name": "mia",
                                    },
                               ],
                          },
                     },
                     {
                          "attributes": {
-                              "type": "Case",
+                              "type": "House",
                               "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5swAAD"
                          },
                          "Id": "5003i00000LJ5swAAD",
-                         "Type": "Mechanical",
-                         "Priority": "Low",
-                         "Origin": "Email",
-                         "Status": "Working"
+                         "Type": 'Town Home',
+                         "Pool": "no",
+                         "stories": "2",
+                         "basement": "no",
                     }
                ]
           }
