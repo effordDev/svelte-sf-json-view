@@ -15,7 +15,10 @@
 
     <div>
 
-      <Item item={rec} useTab={true}/>
+      <Item 
+        item={rec}
+        topLevel={true} 
+      />
 
     </div>
     

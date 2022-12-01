@@ -1,4 +1,9 @@
 const format = (val) => {
+
+     if (val === null) {
+          return ''
+     }
+
      switch (typeof(val)) {
  
        case 'string':
@@ -21,13 +26,16 @@ const primitives = [
      'boolean',
      'number',
      'bigint',
-     'string'	
+     'string',
+     null
 ]
 
 const keysToNotDisplay = [
      'totalSize',
      'done',
-     'attributes'
+     'rowLoadDate',
+     'attributes',
+     'totalSize'
 ]
 
 const formatItem = (item) => {
