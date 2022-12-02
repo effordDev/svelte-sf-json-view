@@ -1,10 +1,9 @@
 <script>
   import { loop_guard } from "svelte/internal";
   import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
-  // import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
   import Tab, { Label } from '@smui/tab';
   import TabBar from '@smui/tab-bar';
-  // import Button from '@smui/button';
   import { 
     format,
     primitives,
@@ -13,6 +12,7 @@
     formatArrayToObject
   } from './util'
   // import Tab from "@smui/tab/src/Tab.svelte";
+  const dispatch = createEventDispatcher()
 
   export let item = {}
   export let nextItem = {}
@@ -102,6 +102,7 @@
     <svelte:self 
       item={nextItem}
       parentKey={active}
+      on:tabselect
     />
     
   {/if}
@@ -110,12 +111,13 @@
 
     <Tab {tab} id={tab} on:click={() => {
       active = tab
-      // console.log(active)
-      console.log(active, tab)
-      console.log(item[active])
+      
       nextItem = {}
       nextItem = item[active]
-      // console.log(value[active] || value)
+
+      // dispatch('tabselect', {
+      //   value: tab
+      // })    
     }}>
 
       <Label>
@@ -126,97 +128,50 @@
 
   {#if item?.[active]} 
     
-  <!-- <div class="card"> -->
     {#if  active !== parentKey} 
     
       <svelte:self 
         item={nextItem}
         parentKey={active}
+        on:tabselect={(event) => active = event.detail.tab}
       />
 
     {/if}
-  <!-- </div> -->
-
-  <!-- {:else} -->
 
   {/if}
 
 
 {/if}
 
-<!-- {#if !tabs.length} -->
-
 {#each formatItem(item) as [key, value]}
-<!-- {console.log({key, value})} -->
-<!-- active: {active} <br />
-parentKey: {parentKey} <br /> -->
 
     {#if !keysToNotDisplay.includes(key) }
     
       {#if (primitives.includes(typeof(value)) || value === null) }
           
-        <!-- {#if active === parentKey} -->
           {format(key)}:
 
-          {format(value)}         
+          {format(value)} <!-- ||| active: {active} -  parentKey: {parentKey}  -->
           
         <br />
-          
-        <!-- {/if} -->
 
       {/if}
-
-      <!-- {#if typeof(value) == 'object' && !Array.isArray(value) && value !== null }
-        
-          {key}: <br />
-
-          <svelte:self 
-            item={value} 
-          />
-
-      {/if} -->
-<!-- 
-      <TabBar tabs={tabs} let:tab bind:active>
-
-        <Tab {tab} id={tab} on:click={() => {
-          active = tab
-          // console.log(active)
-          console.log(active, value)
-          console.log(value[active] || value)
-        }}>
-
-          <Label>
-            {tab}
-          </Label>
-        </Tab>
-      </TabBar> -->
 
       {#if typeof(value) == 'object' && Array.isArray(value) }
         
         {#if key === 'records' && value?.length}
 
-        {#each value as v}
-        
-          <div class="card">
+          {#each value as v}
+          
+            <div class="card">
 
-            <svelte:self 
-              item={v}
-              parentKey={active}
-            />
-          </div>
-        {/each}
-
-
-
-        <!-- {:else}
-
-          {format(key)}: ({value?.length}) <br />
-            
-            {#each value as v, i}
-            
-              <svelte:self item={v} useTab={true}/>
-            
-            {/each} -->
+              <svelte:self 
+                item={v}
+                parentKey={active}
+                on:tabselect
+              />
+            </div>
+          {/each}
 
         {/if}
 
