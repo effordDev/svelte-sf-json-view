@@ -3,6 +3,9 @@
 Feed the Sf-JSON.svelte component an array of any data. In this case we are passing example data from the Salesforce REST api.
 
 [Pure HTML Live Demo](https://svelte.dev/repl/3951ed14c2d94880b9a0e9e56e9d1a22?version=3.53.1)
+
+[Tab Live Demo](https://svelte.dev/repl/9ca7f1f5481343779e25491e77920b9c?version=3.53.1)
+
 ###### Example 
 ```
 [
