@@ -18,6 +18,8 @@
   export let nextItem = {}
   export let parentKey = ''
   export let topLevel = false
+  export let labelMap = new Map()
+
   let active = ''
   // let prevActive = ''
   // let open = false
@@ -30,7 +32,7 @@
   let tabs = [] 
 
   console.log({item})
-  // console.log({topLevel})
+  console.log({labelMap})
   console.log('typeof', typeof(item))
   console.log('formatItem', formatItem(item))
 
@@ -102,6 +104,7 @@
     <svelte:self 
       item={nextItem}
       parentKey={active}
+      labelMap={labelMap}
       on:tabselect
     />
     
@@ -121,7 +124,7 @@
     }}>
 
       <Label>
-        {tab}
+        {format(labelMap, tab)}
       </Label>
     </Tab>
   </TabBar>
@@ -133,13 +136,13 @@
       <svelte:self 
         item={nextItem}
         parentKey={active}
+        labelMap={labelMap}
         on:tabselect={(event) => active = event.detail.tab}
       />
 
     {/if}
 
   {/if}
-
 
 {/if}
 
@@ -149,9 +152,10 @@
     
       {#if (primitives.includes(typeof(value)) || value === null) }
           
-          {format(key)}:
+          <!-- {format(key)}: -->
+          {format(labelMap, key)}:
 
-          {format(value)} <!-- ||| active: {active} -  parentKey: {parentKey}  -->
+          {format(labelMap, value)} <!-- ||| active: {active} -  parentKey: {parentKey}  -->
           
         <br />
 
@@ -168,6 +172,7 @@
               <svelte:self 
                 item={v}
                 parentKey={active}
+                labelMap={labelMap}
                 on:tabselect
               />
             </div>

@@ -1,23 +1,26 @@
-const format = (val) => {
-
+const format = (labelMap, val) => {
+     
      if (val === null) {
           return ''
      }
 
      switch (typeof(val)) {
  
-       case 'string':
-         val = val.charAt(0).toUpperCase() + val.slice(1)
-         break
+          case 'string':
+               val = labelMap.get(val) ? labelMap.get(val) : val 
+               val = val.charAt(0).toUpperCase() + val.slice(1)
+               val = val.replaceAll('__c', '')
+               val = val.replaceAll('_', ' ')
+          break
  
-       case 'number':
-         val = Number(val)
-         break
- 
-       case 'boolean':
-         val = '' + val
-         val = val.charAt(0).toUpperCase() + val.slice(1)
-         break
+          case 'number':
+               val = Number(val)
+          break
+     
+          case 'boolean':
+               val = '' + val
+               val = val.charAt(0).toUpperCase() + val.slice(1)
+          break
      }
      return val
 }
@@ -39,6 +42,7 @@ const keysToNotDisplay = [
 ]
 
 const formatItem = (item) => {
+     if (!item) { return []}
      return Array.isArray(item) ? item : Object.entries(item)
 }
 
