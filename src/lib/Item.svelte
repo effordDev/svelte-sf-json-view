@@ -17,24 +17,17 @@
   export let item = {}
   export let nextItem = {}
   export let parentKey = ''
+  export let activeKey = ''
   export let topLevel = false
   export let labelMap = new Map()
 
   let active = ''
-  // let prevActive = ''
-  // let open = false
-
-  // const toggleOpen = () => {
-	// 	open = !open
-	// }
-
-  
   let tabs = [] 
 
-  console.log({item})
-  console.log({labelMap})
-  console.log('typeof', typeof(item))
-  console.log('formatItem', formatItem(item))
+  // console.log({item})
+  // console.log({labelMap})
+  // console.log('typeof', typeof(item))
+  // console.log('formatItem', formatItem(item))
 
   const type = typeof(item) 
 
@@ -46,19 +39,23 @@
       if (key === 'attributes') {
         tabs = [...tabs, val?.type]
       }
-      if (key === 'records' && val?.length && topLevel) {
-        tabs = [...tabs, val[0]?.attributes?.type]
-      }
+      // if (key === 'records' && val?.length && topLevel) {
+      //   tabs = [...tabs, val[0]?.attributes?.type]
+      // }
       if ((['attributes','rowLoadDate','records'].includes(key))) { return }
       
       if (typeof(val) === 'object' && val !== null) {
         tabs = [...tabs, key]
       }
     })
-
-    console.log({tabs})
+    
     active = tabs[0]
+    activeKey = parentKey
+    console.log({tabs, active, parentKey, activeKey, item})
     // parentKey = active
+    // dispatch('tabselect', {
+    //   value: active
+    // }) 
   }
   
 </script>
@@ -74,32 +71,13 @@
 
 </style>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- {#if tabs.length}
 
-  <TabBar  tabs={tabs} let:tab>
-    <Tab {tab} on:click={() => {
-      active = tab.name
 
-      
-      if (active != prevActive) {
-        prevActive = active
-      } 
-    }}>
-      <Label>{tab.name} {!!tab.quantity ? `(${tab.quantity})` : ''}</Label>
-    </Tab>
-  </TabBar>
-
-    <svelte:self 
-      item={active != prevActive ? item?.[active]  
-      : item?.[prevActive] ? item?.[prevActive] 
-      : formatArrayToObject(formatItem(item))}
-    />
-
-{/if} -->
+<!-- parentKey: {parentKey} <br /> active: {active}  -->
 
 {#if tabs.length}
-  {#if  active === parentKey} 
+
+  {#if activeKey === parentKey} 
   
     <svelte:self 
       item={nextItem}
@@ -113,78 +91,113 @@
   <TabBar tabs={tabs} let:tab bind:active>
 
     <Tab {tab} id={tab} on:click={() => {
+      console.log({tabs, active, activeKey, parentKey, item})
       active = tab
       
-      nextItem = {}
-      nextItem = item[active]
-
-      // dispatch('tabselect', {
-      //   value: tab
-      // })    
+      if (active === activeKey) {
+        
+        nextItem = {}
+        nextItem = item
+      } else {
+        nextItem = {}
+        nextItem = item[active]
+      }
+      
+      
+      activeKey = tab
+      // console.log({tabs, active, activeKey, parentKey, item})
+      
+      
+      dispatch('tabselect', {
+        value: tab
+      })    
     }}>
 
       <Label>
+
         {format(labelMap, tab)}
+        
       </Label>
+
     </Tab>
+
   </TabBar>
 
   {#if item?.[active]} 
     
     {#if  active !== parentKey} 
-    
+
       <svelte:self 
         item={nextItem}
         parentKey={active}
         labelMap={labelMap}
-        on:tabselect={(event) => active = event.detail.tab}
+        on:tabselect
       />
+        <!-- on:tabselect={(event) => active = event.detail.tab} -->
 
     {/if}
 
   {/if}
 
+  <!-- {#if active === activeKey} 
+  here
+    <svelte:self 
+      item={nextItem}
+      parentKey={active}
+      labelMap={labelMap}
+      on:tabselect
+    />
+  {/if} -->
 {/if}
+
 
 {#each formatItem(item) as [key, value]}
 
-    {#if !keysToNotDisplay.includes(key) }
-    
-      {#if (primitives.includes(typeof(value)) || value === null) }
-          
-          <!-- {format(key)}: -->
-          {format(labelMap, key)}:
+  {#if !keysToNotDisplay.includes(key) }
+  
+    {#if (primitives.includes(typeof(value)) || value === null) }
 
-          {format(labelMap, value)} <!-- ||| active: {active} -  parentKey: {parentKey}  -->
-          
-        <br />
+      {#if activeKey === parentKey} 
+      
+      <!-- {format(key)}: -->
+        {format(labelMap, key)}:
 
-      {/if}
-
-      {#if typeof(value) == 'object' && Array.isArray(value) }
+        {format(labelMap, value)}
         
-        {#if key === 'records' && value?.length}
-
-          {#each value as v}
-          
-            <div class="card">
-
-              <svelte:self 
-                item={v}
-                parentKey={active}
-                labelMap={labelMap}
-                on:tabselect
-              />
-            </div>
-          {/each}
-
-        {/if}
+        <br />
 
       {/if}
 
     {/if}
 
-  {/each} 
+    {#if typeof(value) == 'object' && Array.isArray(value) }
+
+      
+      
+      {#if key === 'records' && value?.length}
+
+        {#each value as v}
+      
+          <div class="card">
+              
+            <svelte:self 
+              item={v}
+              parentKey={active}
+              labelMap={labelMap}
+              on:tabselect
+            />
+             
+          </div>
+
+        {/each}
+
+      {/if}
+
+    {/if}
+
+  {/if}
+
+{/each} 
 
 <!-- {/if} -->
 
