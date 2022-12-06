@@ -1,7 +1,13 @@
 const format = (labelMap, val) => {
-     
+
      if (val === null) {
           return ''
+     }
+
+     const isDate = (date) => (new Date(date) !== "Invalid Date") && !isNaN(new Date(date)) 
+     
+     if (isDate(val?.value)) {
+          return new Date(val.value).toISOString()
      }
 
      switch (typeof(val)) {

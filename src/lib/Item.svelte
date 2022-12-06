@@ -32,7 +32,9 @@
         tabs = [...tabs, val?.type]
       }
       
-      if ((['attributes','rowLoadDate','records'].includes(key))) { return }
+      // if (val?.value) { return }
+
+      if ((['attributes','rowLoadDate','records'].includes(key)) || (val?.value)) { return }
       
       if (typeof(val) === 'object' && val !== null) {
         tabs = [...tabs, key]
@@ -41,6 +43,7 @@
     
     active = tabs[0]
     activeKey = parentKey
+    // console.log({tabs, item, active})
   }
   
 </script>
@@ -84,6 +87,7 @@
       }
       
       activeKey = tab
+      console.log({active, activeKey, tab, tabs})
     }}>
 
       <Label>
@@ -127,7 +131,7 @@
 
   {#if !keysToNotDisplay.includes(key) }
   
-    {#if (primitives.includes(typeof(value)) || value === null) }
+    {#if (primitives.includes(typeof(value)) || value === null || value?.value) }
 
       {#if activeKey === parentKey} 
       
