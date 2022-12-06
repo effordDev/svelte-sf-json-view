@@ -7,7 +7,6 @@
   import { 
     format,
     primitives,
-    keysToNotDisplay,
     formatItem,
     formatArrayToObject
   } from './util'
@@ -15,6 +14,7 @@
   const dispatch = createEventDispatcher()
 
   export let item = {}
+  export let keysToNotDisplay = []
   export let nextItem = {}
   export let parentKey = ''
   export let activeKey = ''
@@ -66,7 +66,7 @@
       item={nextItem}
       parentKey={active}
       labelMap={labelMap}
-      on:tabselect
+      keysToNotDisplay={keysToNotDisplay}
     />
     
   {/if}
@@ -86,10 +86,6 @@
       }
       
       activeKey = tab
-      
-      dispatch('tabselect', {
-        value: tab
-      })    
     }}>
 
       <Label>
@@ -110,7 +106,7 @@
         item={nextItem}
         parentKey={active}
         labelMap={labelMap}
-        on:tabselect
+        keysToNotDisplay={keysToNotDisplay}
       />
 
     {/if}
@@ -122,7 +118,7 @@
       item={nextItem}
       parentKey={active}
       labelMap={labelMap}
-      on:tabselect
+      keysToNotDisplay={keysToNotDisplay}
     />
 
   {/if}
@@ -159,7 +155,7 @@
               item={v}
               parentKey={active}
               labelMap={labelMap}
-              on:tabselect
+              keysToNotDisplay={keysToNotDisplay}
             />
              
           </div>
