@@ -33,14 +33,6 @@ const primitives = [
      null
 ]
 
-const keysToNotDisplay = [
-     'totalSize',
-     'done',
-     'rowLoadDate',
-     'attributes',
-     'totalSize'
-]
-
 const formatItem = (item) => {
      if (!item) { return []}
      return Array.isArray(item) ? item : Object.entries(item)
@@ -61,7 +53,6 @@ const formatArrayToObject = (data) => {
 export { 
      format,
      primitives,
-     keysToNotDisplay,
      formatItem,
      formatArrayToObject
 }
