@@ -11,8 +11,6 @@
     formatArrayToObject
   } from './util'
 
-  const dispatch = createEventDispatcher()
-
   export let item = {}
   export let keysToNotDisplay = []
   export let nextItem = {}
