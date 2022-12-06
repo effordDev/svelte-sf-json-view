@@ -5,7 +5,7 @@
   export let data 
   export let labelMap = new Map()
 
-  let active = ''
+  // let active = ''
   
   labelMap.set('ID', 'Id')
   labelMap.set('account_case', 'Account Case')
@@ -26,11 +26,11 @@
         item={rec}
         topLevel={true} 
         labelMap={labelMap}
-        on:tabselect={((event) => {
+      />
+        <!-- on:tabselect={((event) => {
           active = event.detail.value
           console.log({active})
-        })}
-      />
+        })} -->
 
     </div>
     
