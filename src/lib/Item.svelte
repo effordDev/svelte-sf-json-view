@@ -131,7 +131,7 @@
 
   {#if !keysToNotDisplay.includes(key) }
   
-    {#if (primitives.includes(typeof(value)) || value === null) }
+    {#if (primitives.includes(typeof(value)) || value === null || value?.value) }
 
       {#if activeKey === parentKey} 
       
@@ -142,15 +142,6 @@
         <br />
 
       {/if}
-
-    <!-- dates -->
-    {:else if typeof(value) === 'object' && value?.value }
-
-      {format(labelMap, key)}:
-
-      {format(labelMap, value.value)}
-
-      <br />
 
     {/if}
 
