@@ -21,19 +21,15 @@
   
 </script>
 
-<main>
+<main> 
 
   {#each data as rec}
-
-    <div>
-
-      <Item 
-        item={rec}
-        keysToNotDisplay={keysToNotDisplay}
-        labelMap={labelMap}
-      />
-
-    </div>
+      
+    <Item 
+      item={rec}
+      keysToNotDisplay={keysToNotDisplay}
+      labelMap={labelMap}
+    />
     
   {/each}
   
