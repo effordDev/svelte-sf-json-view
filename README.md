@@ -7,7 +7,8 @@ Feed the Sf-JSON.svelte component an array of any data. In this case we are pass
 [Tab Live Demo](https://svelte.dev/repl/9ca7f1f5481343779e25491e77920b9c?version=3.53.1)
 ![image](https://user-images.githubusercontent.com/36901822/206382596-1ebf922d-2fd6-4cf4-a12d-563ed2107f70.png)
 
-###### Example 
+Example
+    
 ```
 [ 
     {
@@ -686,6 +687,7 @@ Feed the Sf-JSON.svelte component an array of any data. In this case we are pass
     }
 ]
 ```
+
 ###### Result
 ![image](https://user-images.githubusercontent.com/36901822/204320160-00f06819-4ec9-4634-a929-34b1cf66d390.png)
 
