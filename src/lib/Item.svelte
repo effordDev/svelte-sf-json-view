@@ -18,12 +18,40 @@
   export let activeKey = ''
   export let onlyFields = false
   export let labelMap = new Map()
-  
-  // let active = ''
+
+  let active = ''
   // let tabs = [] 
+  
+  $: formattedObject = formatItem(item).sort((a, b) => a[0]?.localeCompare(b[0]))
+  $: tabs = generateTabs(item)
+  // $: active = activeKey ? activeKey : tabs?.length ?  tabs[0] : ''
+  // $: active = tabs[0]
+  //   activeKey = parentKey
+  
+  // const type = typeof(item)
+  // if (type === 'object' && type != null) {
+    
+  //   formatItem(item).forEach(([key, val]) => {
+      
+  //     if (key === 'attributes') {
+  //       tabs = [...tabs, val?.type]
+  //     }
+      
+  //     // if (val?.value) { return }
+  //     if ((['attributes','rowLoadDate','records'].includes(key)) || (val?.value)) { return }
+      
+  //     if (typeof(val) === 'object' && val !== null) {
+  //       tabs = [...tabs, key]
+  //     }
+  //   })
+    
+  //   active = tabs[0]
+  //   activeKey = parentKey
+  //   console.log({tabs, item, active, activeKey, parentKey, })
+  // }
+
   const generateTabs = (currItem) => {
     let  t = []
-
     const type = typeof(currItem) 
   
     if (type === 'object' && type != null ) {
@@ -44,19 +72,13 @@
       })
       
     }
+    active = t[0]
+    activeKey = parentKey
     // console.log({t})
     return t
   }
-  $: formattedObject = formatItem(item).sort((a, b) => a[0]?.localeCompare(b[0]))
-  $: tabs = generateTabs(item)
-  $: active = activeKey ? activeKey : tabs?.length ?  tabs[0] : ''
-  // activeKey = active
-
-
-  console.log({nextItem, active, activeKey, parentKey, tabs, item})
   
 </script>
-
 <style>
   .card {
     border: 1px solid black;
@@ -65,16 +87,15 @@
     padding: 1em;
     /* display: flex; */
   }
-
 </style>
 
 {#if tabs.length && !onlyFields}
 
-  {#if activeKey === parentKey && item?.attributes?.type !== activeKey}  
-  
+  {#if activeKey === parentKey && item?.attributes?.type === activeKey}  
+  <!-- {console.log('1', active, activeKey, parentKey, tabs, item, nextItem)} -->
     <svelte:self 
       item={nextItem}
-      parentKey={activeKey}
+      parentKey={active}
       labelMap={labelMap}
       keysToNotDisplay={keysToNotDisplay}
     />
@@ -84,23 +105,19 @@
   <TabBar tabs={tabs} let:tab bind:active>
 
     <Tab {tab} id={tab} on:click={() => {
-      
       active = tab
       
-      // nextItem = {}
-      
-      if (tab === tabs[0]) {
+      nextItem = {}
+      // item = Object.assign(item)
+      if (active === tabs[0]) {
         nextItem = item
       } else {
-        nextItem = item[tab]
+        nextItem = item[active]
       }
-
-      item = item
-      nextItem = nextItem
-
+      
       activeKey = tab
+      // console.log({active, activeKey, tab, tabs, item, nextItem})
     }}>
-
       <Label>
 
         {format(labelMap, tab)} {item?.[tab.toLowerCase()]?.totalSize ? `(${item?.[tab.toLowerCase()]?.totalSize})` : ''}
@@ -111,10 +128,11 @@
 
   </TabBar>
 
-  {#if item?.[activeKey]} 
+  {#if item?.[active]} 
     
     {#if  active !== parentKey} 
     
+    <!-- {console.log('2',item, nextItem)} -->
       <svelte:self 
         item={nextItem}
         parentKey={activeKey}
@@ -124,7 +142,9 @@
 
     {/if}
 
-  {:else if item?.attributes?.type === activeKey && !onlyFields}
+    {:else if item?.attributes?.type === activeKey && !onlyFields}
+
+    <!-- {console.log('3', item, nextItem)} -->
     
     <svelte:self 
       onlyFields
@@ -133,19 +153,17 @@
       labelMap={labelMap}
       keysToNotDisplay={keysToNotDisplay}
     />
-
   {/if}
 
 {/if}
 
+<!-- active: {active} activeKey: {activeKey}  parentkey:{parentKey} - { item?.attributes?.type}<br /> -->
+
 {#each formattedObject as [key, value]}
-<!-- {#each formatItem(item) as [key, value]} -->
 
   {#if !keysToNotDisplay.includes(key) }
   
     {#if (primitives.includes(typeof(value)) || value === null || value?.value) }
-
-      <!-- {key}: {value} <i>activeKey: {activeKey} parentKey: {parentKey}</i><br /> -->
 
       {#if activeKey === parentKey} 
       
@@ -164,25 +182,19 @@
     {#if typeof(value) == 'object' && Array.isArray(value) }
 
       {#if key === 'records' && value?.length}
-    
+
         {#each value as v}
-         
-          <!-- {#if v?.ID || v?.attributes}  -->
-          
-            <div class="card">
+      
+          <div class="card">
 
-              <!-- {v.ID} -->
-
-              <svelte:self 
-                item={v}
-                parentKey={activeKey}
-                labelMap={labelMap}
-                keysToNotDisplay={keysToNotDisplay}
-              />
-              
-            </div>
-
-          <!-- {/if} -->
+            <svelte:self 
+              item={v}
+              parentKey={activeKey}
+              labelMap={labelMap}
+              keysToNotDisplay={keysToNotDisplay}
+            />
+             
+          </div>
 
         {/each}
 
@@ -193,4 +205,3 @@
   {/if}
 
 {/each} 
-

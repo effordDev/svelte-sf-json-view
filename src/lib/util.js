@@ -7,7 +7,9 @@ const format = (labelMap, val) => {
      const isDate = (date) => (new Date(date) !== "Invalid Date") && !isNaN(new Date(date)) 
      
      if (isDate(val?.value)) {
-          return new Date(val.value).toISOString()
+          return new Date(val.value).toLocaleDateString()
+          // let d = new Date(val.value).toISOString()
+          // return d.slice(0, d.indexOf('T')) 
      }
 
      switch (typeof(val)) {
