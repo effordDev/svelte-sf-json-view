@@ -5,80 +5,336 @@ Feed the Sf-JSON.svelte component an array of any data. In this case we are pass
 [Pure HTML Live Demo](https://svelte.dev/repl/3951ed14c2d94880b9a0e9e56e9d1a22?version=3.53.1)
 
 [Tab Live Demo](https://svelte.dev/repl/9ca7f1f5481343779e25491e77920b9c?version=3.53.1)
+![image](https://user-images.githubusercontent.com/36901822/206382596-1ebf922d-2fd6-4cf4-a12d-563ed2107f70.png)
 
 ###### Example 
 ```
 [
      {
-          "attributes": {
-               "type": "Contact",
-               "url": "/services/data/v55.0/sobjects/Contact/0033i00000Q9oRdAAJ"
-          },
-          "Id": "0033i00000Q9oRdAAJ",
-          "Name": "Kelly Slater",
-          "Title": "Surfer",
-          "Account": {
-               "attributes": {
-                    "type": "Account",
-                    "url": "/services/data/v55.0/sobjects/Account/0013i000004oW4GAAU"
-               },
-               "Name": "WSL",
-               "BillingAddress": {
-                    "city": "Flagler Beach",
-                    "country": "United States",
-                    "geocodeAccuracy": "Block",
-                    "latitude": 29.505416,
-                    "longitude": -81.139457,
-                    "postalCode": "32136",
-                    "state": "FL",
-                    "street": "2090 north ocean shore blvd"
-               }
-          },
-          "Cases": {
-               "totalSize": 2,
-               "done": true,
-               "records": [
-                    {
-                         "attributes": {
-                              "type": "Case",
-                              "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5svAAD"
-                         },
-                         "Id": "5003i00000LJ5svAAD",
-                         "Type": 'urgent',
-                         "Priority": "Medium",
-                         "Origin": "Phone",
-                         "Status": "New",
-                         "Fakeobject": {
-                              "totalSize": 1,
-                              "done": true,
-                              "records": [
-                                   {
-                                        "attributes": {
-                                             "type": "Case",
-                                             "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5svAAD"
-                                        },
-                                        "Id": "5123456789112345",
-                                        "Type": 'type',
-                                        "Priority": "meh",
-                                        "Origin": "text",
-                                        "Status": "ya",
-                                   },
-                              ],
-                         },
+          "totalSize": 1,
+          "records": [
+               {
+                    "ID": "0013C00AG",
+                    "RecordType": "0124x00AAY",
+                    "Age_Range": "20-24",
+                
+                    "rowLoadDate": {
+                         "value": "2022-11-29T20:24:08.172000"
                     },
-                    {
-                         "attributes": {
-                              "type": "Case",
-                              "url": "/services/data/v55.0/sobjects/Case/5003i00000LJ5swAAD"
+                    "attributes": {
+                         "type": "Account"
+                    },
+                    "account_case": {
+                         "totalSize": 1,
+                         "records": [
+                              {
+                                   "ID": "5003CsC",
+                                   "rowLoadDate": {
+                                        "value": "2022-11-29T20:24:02.463000"
+                                   },
+                                   "RecordType": "Prenatal",
+                                   "Status": "Guided Interaction",
+                                   "Data_Warehouse_ETL_Last_Modified": null,
+                                   "ProgramId": "a013tAAA",
+                                   "Warm_Handoff_Notes__c": "",
+                                   "attributes": {
+                                        "type": "Case"
+                                   },
+                                   "case_teamMember": {
+                                        "totalSize": 2,
+                                        "records": [
+                                             {
+                                                  "ID": "0B63C0AY",
+                                                  "MemberId": "0054xAA",
+                                                 
+                                                  "rowLoadDate": {
+                                                       "value": "2022-11-29T20:24:17.644000"
+                                                  },
+                                                  "attributes": {
+                                                       "type": "CaseTeamMember"
+                                                  },
+                                                  "teamMember_user": {
+                                                       "totalSize": 1,
+                                                       "records": [
+                                                            {
+                                                                 "ID": "0054x0003blAAA",
+                                                                 "Title": "",
+                                                                 "Email": "test.test@coastalcloud.us",
+                                                                 
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:14.678000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "User"
+                                                                 }
+                                                            }
+                                                       ]
+                                                  }
+                                             },
+                                             {
+                                                  "ID": "0B63C0I",
+                                                  "MemberId": "005AAS",
+                                                  "TeamRoleId": "Prenatal Navigator",
+                                                  "ParentId": "500QAC",
+                                                  "rowLoadDate": {
+                                                       "value": "2022-11-29T20:24:17.644000"
+                                                  },
+                                                  "attributes": {
+                                                       "type": "CaseTeamMember"
+                                                  },
+                                                  "teamMember_user": {
+                                                       "totalSize": 1,
+                                                       "records": [
+                                                            {
+																															"ID": "00AAS",
+																															"Title": "",
+																															"Email": "test@test.org.invalid",
+																															"Phone": "",
+																															
+																															"rowLoadDate": {
+																																	 "value": "2022-12-01T00:48:22.502000"
+																															},
+																															"attributes": {
+																																	 "type": "User"
+																															}
+                                                            }
+                                                       ]
+                                                  }
+                                             }
+                                        ]
+                                   },
+                                   "case_assessment": {
+                                        "totalSize": 2,
+                                        "records": [
+                                             {
+                                                  "ID": "a0PAG",
+                                                  "RecordType": "Matrix",
+                                                  "Touchpoint": "50sQAC",
+                                                  
+                                                  "Subject": "00137iQAG",
+                                                  "rowLoadDate": {
+                                                       "value": "2022-11-29T20:24:11.201000"
+                                                  },
+                                                  "attributes": {
+                                                       "type": "nav_Assessment__c"
+                                                  },
+                                                  "assessment_matrix": {
+                                                       "totalSize": 13,
+                                                       "records": [
+                                                            {
+                                                                 "ID": "a0QA2",
+                                                                 "Matrix": "a079UAG",
+                                                                 "Factor": "Child Care Plans",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0tQA2",
+                                                                 "Matrix": "a0P3UAG",
+                                                                 "Factor": "Family and Community Safety",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0t3C0QA2",
+                                                                 "Matrix": "a0P39UAG",
+                                                                 "Factor": "Health Care Plans",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0t3CM",
+                                                                 "Matrix": "a0P3CUAG",
+                                                                 "Factor": "History of Parenting Difficulties",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0t3C00QAM",
+                                                                 "Matrix": "a0P79UAG",
+                                                                 "Factor": "Household Safety/ Material Supports",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0t3QAM",
+                                                                 "Matrix": "a0P9UAG",
+                                                                 "Factor": "Infant Health and Child Development",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0tjQAM",
+                                                                 "Matrix": "a0PUAG",
+                                                                 "Factor": "Thirteenth Factor",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0t3AM",
+                                                                 "Matrix": "a0P3C000003YI79UAG",
+                                                                 "Factor": "Maternal Health",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0t3CQAM",
+                                                                 "Matrix": "a0P3UAG",
+                                                                 "Factor": "Parent-Child Relationship",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0t3gQAM",
+                                                                 "Matrix": "a0P79UAG",
+                                                                 "Factor": "Parent Emotional Support",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0t3IhQAM",
+                                                                 "Matrix": "a0P39UAG",
+                                                                 "Factor": "Substance Use",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0t3iQAM",
+                                                                 "Matrix": "a079UAG",
+                                                                 "Factor": "Parent Well Being",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            },
+                                                            {
+                                                                 "ID": "a0t3QAM",
+                                                                 "Matrix": "a0P39UAG",
+                                                                 "Factor": "Management of Infant Crying/Child Behavior",
+                                                                 "Most_Recent_Rating__c": "",
+                                                                 "rowLoadDate": {
+                                                                      "value": "2022-11-29T20:24:09.702000"
+                                                                 },
+                                                                 "attributes": {
+                                                                      "type": "nav_Matrix_Factor__c"
+                                                                 }
+                                                            }
+                                                       ]
+                                                  }
+                                             },
+                                             {
+                                                  "ID": "a0P3EUAW",
+                                                  "RecordType": "Prenatal_Screening",
+                                                  "Touchpoint": "5003C5sQAC",
+                                                  "Assessment_Category": "Navigation Screening",
+                                                  "Assessment_Completed_On": {
+                                                       "value": "2022-11-16"
+                                                  },
+                                                  "Client": "00137iQAG",
+                                                  "Interaction": "",
+                                                  "Score": "",
+                                                  "Subject": "0013iQAG",
+                                                  "rowLoadDate": {
+                                                       "value": "2022-11-29T20:24:11.201000"
+                                                  },
+                                                  "attributes": {
+                                                       "type": "nav_Assessment__c"
+                                                  },
+                                                  "assessment_matrix": {
+                                                       "totalSize": 0,
+                                                       "records": []
+                                                  }
+                                             }
+                                        ]
                          },
-                         "Id": "5003i00000LJ5swAAD",
-                         "Type": "Mechanical",
-                         "Priority": "Low",
-                         "Origin": "Email",
-                         "Status": "Working"
+                                        "case_interactions": 
+                         {
+                                        "totalSize": 0,
+                                        "records": []
+                          },
+                                        "case_resources": 
+                    {
+                                        "totalSize": 0,
+                                        "records": []
+                          },
+                                        "case_personNeed": 
+                    {
+                                        "totalSize": 0,
+                                        "records": []
+                          },
+                                        "case_touchpointChild": 
+                    {
+                                        "totalSize": 0,
+                                        "records": []
+                          },
+                                        "case_touchpointSite": 
+                    {
+                                        "totalSize": 0,
+                                        "records": []
                     }
-               ]
           }
+]
+}
+     				}
+     		]
      }
 ]
 ```
