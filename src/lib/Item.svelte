@@ -20,35 +20,9 @@
   export let labelMap = new Map()
 
   let active = ''
-  // let tabs = [] 
-  
+
   $: formattedObject = formatItem(item).sort((a, b) => a[0]?.localeCompare(b[0]))
   $: tabs = generateTabs(item)
-  // $: active = activeKey ? activeKey : tabs?.length ?  tabs[0] : ''
-  // $: active = tabs[0]
-  //   activeKey = parentKey
-  
-  // const type = typeof(item)
-  // if (type === 'object' && type != null) {
-    
-  //   formatItem(item).forEach(([key, val]) => {
-      
-  //     if (key === 'attributes') {
-  //       tabs = [...tabs, val?.type]
-  //     }
-      
-  //     // if (val?.value) { return }
-  //     if ((['attributes','rowLoadDate','records'].includes(key)) || (val?.value)) { return }
-      
-  //     if (typeof(val) === 'object' && val !== null) {
-  //       tabs = [...tabs, key]
-  //     }
-  //   })
-    
-  //   active = tabs[0]
-  //   activeKey = parentKey
-  //   console.log({tabs, item, active, activeKey, parentKey, })
-  // }
 
   const generateTabs = (currItem) => {
     let  t = []
@@ -61,8 +35,6 @@
         if (key === 'attributes') {
           t = [...t, val?.type]
         }
-        
-        // if (val?.value) { return }
   
         if ((['attributes','rowLoadDate','records'].includes(key)) || (val?.value)) { return }
         
@@ -74,7 +46,6 @@
     }
     active = t[0]
     activeKey = parentKey
-    // console.log({t})
     return t
   }
   
@@ -92,7 +63,7 @@
 {#if tabs.length && !onlyFields}
 
   {#if activeKey === parentKey && item?.attributes?.type === activeKey}  
-  <!-- {console.log('1', active, activeKey, parentKey, tabs, item, nextItem)} -->
+
     <svelte:self 
       item={nextItem}
       parentKey={active}
@@ -132,7 +103,6 @@
     
     {#if  active !== parentKey} 
     
-    <!-- {console.log('2',item, nextItem)} -->
       <svelte:self 
         item={nextItem}
         parentKey={activeKey}
@@ -143,8 +113,6 @@
     {/if}
 
     {:else if item?.attributes?.type === activeKey && !onlyFields}
-
-    <!-- {console.log('3', item, nextItem)} -->
     
     <svelte:self 
       onlyFields
@@ -156,8 +124,6 @@
   {/if}
 
 {/if}
-
-<!-- active: {active} activeKey: {activeKey}  parentkey:{parentKey} - { item?.attributes?.type}<br /> -->
 
 {#each formattedObject as [key, value]}
 
