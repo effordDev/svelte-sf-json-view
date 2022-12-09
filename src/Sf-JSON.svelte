@@ -11,12 +11,7 @@
     // 'attributes',
     // 'totalSize'
   ]
-
-  // labelMap.set('ID', 'Id')
-  // labelMap.set('account_case', 'Account Case')
-  // labelMap.set('RecordType', 'Record Type')
-
-  // data = typeof(sampleData) === 'string' ? JSON.parse(sampleData) : sampleData 
+  
   data = typeof(data) === 'string' ? JSON.parse(data) : data 
   
 </script>
