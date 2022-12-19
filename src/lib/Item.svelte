@@ -33,7 +33,7 @@
       formatItem(currItem).forEach(([key, val]) => {
         
         if (key === 'attributes') {
-          t = [...t, val?.type]
+          t = [val?.type, ...t]
         }
   
         if ((['attributes','rowLoadDate','records'].includes(key)) || (val?.value)) { return }
