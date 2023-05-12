@@ -7,6 +7,7 @@ Feed the Sf-JSON.svelte component an array of any data. In this case we are pass
 
 Example
     
+    
 ```
 [ 
     {
